@@ -1,0 +1,16 @@
+<div style="margin-bottom: 1rem" *ngFor="let q of questions">
+  <div class="question">
+    {{ q.question }}
+  </div>
+
+  <answers [answers]="q.questions" [questions]="questions"></answers>
+</div>
+
+<button
+  type="button"
+  class="submit"
+  *ngIf="quizService.allAnswerProvided"
+  [routerLink]="['/result']"
+>
+  submit
+</button>

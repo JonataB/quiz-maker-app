@@ -1,0 +1,10 @@
+<select [id]="id" [(ngModel)]="selectedOption">
+  <option [value]="titleValue" disabled selected>{{ title }}</option>
+  <option
+    *ngFor="let item of options"
+    [ngValue]="optionValue"
+    (click)="selectedItem(item)"
+  >
+    {{ item?.name }}
+  </option>
+</select>

@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+}
+
+button.submit {
+  display: block;
+  width: 65%;
+  margin: 2rem auto;
+  padding: 0.4rem;
+  color: white;
+  background-color: gray;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    color: gray;
+    background-color: white;
+  }
+}
+
+button.create-quiz {
+  border-radius: 6px;
+  padding: 4px;
+  color: #373737;
+  background-color: white;
+  border: solid 1px #cfcccc;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: none;
+}
+
+select {
+  border-radius: 6px;
+  padding: 4px;
+  border-color: #cfcccc;
+  color: #373737;
+}

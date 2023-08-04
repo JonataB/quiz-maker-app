@@ -1,0 +1,8 @@
+<ng-container *ngFor="let item of answers; let i = index">
+  <selectable-button
+    (click)="selectedItem(item)"
+    [label]="item"
+    (selected)="onSelected($event, i)"
+    [isSelected]="answerSelected === item"
+  ></selectable-button>
+</ng-container>

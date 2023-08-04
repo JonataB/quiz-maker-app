@@ -1,0 +1,7 @@
+<div style="text-align: center">
+  <h1>
+    {{ title }}
+  </h1>
+  <quiz-generator (questions)="onQuestionsCreated($event)"></quiz-generator>
+  <questions [questions]="questions"></questions>
+</div>
