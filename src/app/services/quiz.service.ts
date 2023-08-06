@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Quiz, QuizForUser, QuizResponse } from '../models/quiz';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -11,13 +11,18 @@ import { replaceHtmlEntities, shuffle } from '../utils/utils';
 export class QuizService {
   private readonly amount = 5;
   private readonly type = 'multiple';
-
-  // private quizForUserSubject = new BehaviorSubject<QuizForUser[]>([]);
-  // quizForUser$ = this.quizForUserSubject.asObservable();
-  quizForUser: QuizForUser[] = [];
   private _allAnswerProvided = false;
 
-  public get allAnswerProvided() {
+  private _quizForUser: QuizForUser[] = [];
+
+  public get quizForUser(): QuizForUser[] {
+    return this._quizForUser;
+  }
+  public set quizForUser(value: QuizForUser[]) {
+    this._quizForUser = value;
+  }
+
+  public get allAnswerProvided(): boolean {
     return this._allAnswerProvided;
   }
   public set allAnswerProvided(value) {
@@ -50,22 +55,28 @@ export class QuizService {
         });
       }),
       tap((quiz) => {
-        this.quizForUser = [];
-        this.quizForUser = quiz;
-        // this.quizForUserSubject.next(res)
+        this._quizForUser = [];
+        this._quizForUser = quiz;
       })
     );
   }
 
-  setAnswer(answer: string, indexOfanswer: number, indexOfQuestion: number) {
-    console.log(this.quizForUser);
-    console.log(answer, indexOfanswer, indexOfQuestion);
-
-    this.quizForUser[indexOfQuestion].user_answer = answer;
+  setAnswer(
+    answer: string,
+    _indexOfanswer: number,
+    indexOfQuestion: number
+  ): void {
+    this._quizForUser[indexOfQuestion].user_answer = answer;
     this.checkForAllAnswer(this.quizForUser);
   }
 
   checkForAllAnswer(quizForUser: QuizForUser[]): void {
     this.allAnswerProvided = quizForUser.every((q) => q.user_answer !== '');
+  }
+
+  getCorrectAnswer(): number {
+    return this._quizForUser.reduce((acc: number, curr: QuizForUser) => {
+      return acc + (curr.user_answer === curr.correct_answer ? 1 : 0);
+    }, 0);
   }
 }

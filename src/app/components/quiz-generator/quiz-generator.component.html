@@ -1,19 +1,3 @@
-<!-- <select-option
-  [id]="'categorySelect'"
-  [title]="'Select a category'"
-  [titleValue]="''"
-  [options]="(categories$ | async) || []"
-  (optionSelected)="onCategorySelected($event)"
-></select-option>
-
-<select-option
-  [id]="'difficultySelect'"
-  [title]="'Select a difficulty'"
-  [titleValue]="0"
-  [options]="difficulties"
-  (optionSelected)="onDifficultySelected($event)"
-></select-option> -->
-
 <ng-container *ngIf="categories$ | async as categories">
   <select id="categorySelect" [(ngModel)]="selectedCategory">
     <option value="0" disabled selected>Select a category</option>
@@ -24,8 +8,8 @@
 
   <select id="difficultySelect" [(ngModel)]="selectedDifficulty">
     <option value="" disabled selected>Select a difficulty</option>
-    <option *ngFor="let d of difficulties" [ngValue]="d.name">
-      {{ d.name }}
+    <option *ngFor="let d of difficulties" [ngValue]="d">
+      {{ d }}
     </option>
   </select>
 

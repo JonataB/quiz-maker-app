@@ -1,0 +1,19 @@
+.result-button {
+  display: inline-block;
+  color: green;
+  background-color: white;
+  border: solid 1px rgb(6, 105, 6);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin: 0.2rem 0.5rem;
+  cursor: not-allowed;
+}
+
+.correct {
+  background-color: green;
+  color: white;
+}
+.uncorrect {
+  background-color: red;
+  color: white;
+}

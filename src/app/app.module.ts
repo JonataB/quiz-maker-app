@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { SelectableButtonComponent } from './components/selectable-button/selectable-button.component';
 import { AnswersComponent } from './components/answers/answers.component';
-import { SelectOptionComponent } from './components/select-option/select-option.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HomeComponent } from './components/home/home.component';
-import { ResultComponent } from './components/result/result.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ResultComponent } from './pages/result/result.component';
+import { ScoreComponent } from './components/score/score.component';
+import { ScoreTextPipe } from './pipes/score-text.pipe';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,11 @@ import { ResultComponent } from './components/result/result.component';
     QuestionsComponent,
     SelectableButtonComponent,
     AnswersComponent,
-    SelectOptionComponent,
     PageNotFoundComponent,
     HomeComponent,
     ResultComponent,
+    ScoreComponent,
+    ScoreTextPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

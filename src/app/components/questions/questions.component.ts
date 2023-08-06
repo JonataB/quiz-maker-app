@@ -13,5 +13,7 @@ export class QuestionsComponent implements OnInit {
 
   constructor(public quizService: QuizService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.quizService.quizForUser = [];
+  }
 }

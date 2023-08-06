@@ -1,0 +1,28 @@
+<h1>RESULTS</h1>
+
+<div style="text-align: center; margin-bottom: 1rem">
+  <ng-container *ngFor="let q of quiz">
+    <div class="question">
+      {{ q.question }}
+    </div>
+    <ng-container *ngFor="let item of q.questions">
+      <button
+        type="button"
+        class="result-button"
+        disabled
+        [ngClass]="setColor(item, q)"
+      >
+        {{ item }}
+      </button>
+    </ng-container>
+  </ng-container>
+</div>
+
+<score
+  [correctAnswers]="correctAnswer"
+  [questionsCount]="totalQuestions"
+></score>
+
+<button type="button" class="submit" [routerLink]="['/']">
+  Create a new quiz
+</button>

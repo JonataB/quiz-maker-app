@@ -21,23 +21,11 @@ button.submit {
   }
 }
 
-button.create-quiz {
-  border-radius: 6px;
-  padding: 4px;
-  color: #373737;
-  background-color: white;
-  border: solid 1px #cfcccc;
-  cursor: pointer;
-}
-
 button:disabled {
   opacity: 0.6;
-  cursor: none;
+  cursor: not-allowed;
 }
 
-select {
-  border-radius: 6px;
-  padding: 4px;
-  border-color: #cfcccc;
-  color: #373737;
+h1 {
+  text-align: center;
 }

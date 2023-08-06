@@ -5,7 +5,6 @@ import { Category } from 'src/app/models/category.interface';
 import { QuizForUser } from 'src/app/models/quiz';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizService } from 'src/app/services/quiz.service';
-import { SelectOption } from '../select-option/select-option.component';
 
 @Component({
   selector: 'quiz-generator',
@@ -14,11 +13,7 @@ import { SelectOption } from '../select-option/select-option.component';
 })
 export class QuizGeneratorComponent implements OnInit {
   categories$: Observable<Category[]> = this.categoryService.getCategory();
-  difficulties: SelectOption[] = [
-    { id: 1, name: 'easy' },
-    { id: 1, name: 'medium' },
-    { id: 1, name: 'hard' },
-  ];
+  difficulties = ['easy', 'medium', 'hard'];
 
   selectedCategory = 0;
   selectedDifficulty = '';
@@ -42,12 +37,4 @@ export class QuizGeneratorComponent implements OnInit {
       .pipe(finalize(() => (this.loading = false)))
       .subscribe((q) => this.questions.emit(q));
   }
-
-  // onCategorySelected(category: Category) {
-  //   this.selectedCategory = category.id;
-  // }
-
-  // onDifficultySelected(difficulty: string) {
-  //   this.selectedDifficulty = difficulty;
-  // }
 }

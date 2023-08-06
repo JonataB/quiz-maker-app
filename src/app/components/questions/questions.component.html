@@ -2,14 +2,13 @@
   <div class="question">
     {{ q.question }}
   </div>
-
   <answers [answers]="q.questions" [questions]="questions"></answers>
 </div>
 
 <button
+  *ngIf="quizService.allAnswerProvided && quizService.quizForUser.length > 0"
   type="button"
   class="submit"
-  *ngIf="quizService.allAnswerProvided"
   [routerLink]="['/result']"
 >
   submit
