@@ -1,0 +1,1 @@
+*{font-family:Roboto,sans-serif;font-size:1rem}button.submit{display:block;width:65%;margin:2rem auto;padding:.4rem;color:#fff;background-color:gray;border-radius:6px;cursor:pointer}button.submit:hover{color:gray;background-color:#fff}button:disabled{opacity:.6;cursor:not-allowed}h1{text-align:center}
