@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { QuizGeneratorComponent } from './components/quiz-generator/quiz-generator.component';
 import { FormsModule } from '@angular/forms';
 import { QuestionsComponent } from './components/questions/questions.component';
@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ResultComponent } from './pages/result/result.component';
 import { ScoreComponent } from './components/score/score.component';
 import { ScoreTextPipe } from './pipes/score-text.pipe';
+import { ServicesInterceptor } from './services/services.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,13 @@ import { ScoreTextPipe } from './pipes/score-text.pipe';
     ScoreTextPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServicesInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

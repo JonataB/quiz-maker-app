@@ -23,6 +23,8 @@ export class ServicesInterceptor implements HttpInterceptor {
           error.status < 500
         ) {
           alert('Seems some services not works. Please try later');
+        } else if (error.status === 0 && !navigator.onLine) {
+          alert('Please check your connection.');
         } else {
           alert('Some error occurs. Please try later');
         }
